@@ -15,8 +15,8 @@ namespace FrontEndTarjetaCredito.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("http://localhost:5128/api/Tarjetas");
+            var client = _httpClientFactory.CreateClient("ApiBase");
+            var response = await client.GetAsync($"api/Tarjetas");
 
             if (!response.IsSuccessStatusCode)
             {

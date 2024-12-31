@@ -19,10 +19,13 @@ namespace FrontEndTarjetaCredito.Controllers
         {
             try
             {
-                var client = _httpClientFactory.CreateClient();
+                //var client = _httpClientFactory.CreateClient();
+
+                // Crear cliente con la configuración de "ApiBase"
+                var client = _httpClientFactory.CreateClient("ApiBase");
 
                 // Obtener el estado de cuenta
-                var estadoCuentaResponse = await client.GetAsync($"http://localhost:5128/api/EstadoCuenta/{id}");
+                var estadoCuentaResponse = await client.GetAsync($"api/EstadoCuenta/{id}");
                 if (!estadoCuentaResponse.IsSuccessStatusCode)
                 {
                     ViewBag.ErrorMessage = "No se pudo obtener el estado de cuenta. Intenta nuevamente.";
@@ -33,7 +36,7 @@ namespace FrontEndTarjetaCredito.Controllers
                 var estadoCuenta = JsonConvert.DeserializeObject<EstadoCuentaViewModel>(jsonEstadoCuenta);
 
                 // Obtener compras mensuales
-                var comprasResponse = await client.GetAsync($"http://localhost:5128/api/Compra/{id}");
+                var comprasResponse = await client.GetAsync($"api/Compra/{id}");
                 if (comprasResponse.IsSuccessStatusCode)
                 {
                     var jsonCompras = await comprasResponse.Content.ReadAsStringAsync();

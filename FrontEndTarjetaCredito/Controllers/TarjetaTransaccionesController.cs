@@ -30,7 +30,9 @@ namespace FrontEndTarjetaCredito.Controllers
 
             try
             {
-                var client = _httpClientFactory.CreateClient();
+               
+                // Usa el cliente HTTP configurado con la URL base
+                var client = _httpClientFactory.CreateClient("ApiBase");
                 var pago = new
                 {
                     pagoID = 0,
@@ -42,7 +44,7 @@ namespace FrontEndTarjetaCredito.Controllers
                 var json = JsonConvert.SerializeObject(pago);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("http://localhost:5128/api/Pago", content);
+                var response = await client.PostAsync("api/Pago", content);
 
                 if (!response.IsSuccessStatusCode)
                 {

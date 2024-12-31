@@ -5,6 +5,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
+// Configuración del cliente HTTP con una ruta base específica
+builder.Services.AddHttpClient("ApiBase", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5128/");
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
