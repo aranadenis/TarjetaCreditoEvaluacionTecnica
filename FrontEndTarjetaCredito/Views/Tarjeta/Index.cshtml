@@ -1,0 +1,55 @@
+﻿@using System.Text
+@model IEnumerable<FrontEndTarjetaCredito.Models.TarjetaViewModel>
+
+@{
+    ViewBag.Title = "Listado de Tarjetas";
+}
+
+<h1>Listado de Tarjetas de Crédito</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Número de Tarjeta</th>
+            <th>Nombre del Titular</th>
+            <th>Fecha de Emisión</th>
+            <th>Límite de Crédito</th>
+            <th>Saldo Utilizado</th>
+            <th>Saldo Disponible</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var tarjeta in Model)
+            {
+                <tr>
+                    <td>@tarjeta.TarjetaID</td>
+                    <td>@Html.Raw(Encoding.UTF8.GetString(Convert.FromBase64String(tarjeta.NumeroTarjeta)))</td>
+                    <td>@tarjeta.NombreTitular</td>
+                    <td>@tarjeta.FechaEmision.ToString("yyyy-MM-dd")</td>
+                    <td>@tarjeta.LimiteCredito</td>
+                    <td>@tarjeta.SaldoUtilizado</td>
+                    <td>@tarjeta.SaldoDisponible</td>
+                    <td>
+                        <a asp-action="AgregarPago" asp-controller="TarjetaTransacciones" asp-route-tarjetaId="@tarjeta.TarjetaID" class="btn btn-success">Pagar</a>
+                    </td>
+                    <td>
+                        <a asp-action="AgregarCompra" asp-controller="TarjetaTransacciones" asp-route-tarjetaId="@tarjeta.TarjetaID" class="btn btn-info">Comprar</a>
+                    </td>
+                    <td>
+                        <!-- Botón para Ver Estado de Cuenta -->
+                        <a asp-action="VerEstadoCuenta" asp-controller="EstadoCuenta" asp-route-id="@tarjeta.TarjetaID" class="btn btn-primary">Estado de Cuenta</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No hay tarjetas disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>

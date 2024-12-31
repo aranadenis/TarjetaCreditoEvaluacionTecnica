@@ -1,0 +1,86 @@
+﻿@model FrontEndTarjetaCredito.Models.EstadoCuentaViewModel
+
+@{
+    ViewBag.Title = "Estado de Cuenta";
+}
+
+<h2>Estado de Cuenta de @Model.NombreTitular</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>Nombre del Titular</th>
+            <td>@Model.NombreTitular</td>
+        </tr>
+        <tr>
+            <th>Número de Tarjeta</th>
+            <td>@Model.NumeroTarjeta</td>
+        </tr>
+        <tr>
+            <th>Saldo Utilizado</th>
+            <td>@Model.SaldoUtilizado</td>
+        </tr>
+        <tr>
+            <th>Saldo Disponible</th>
+            <td>@Model.SaldoDisponible</td>
+        </tr>
+        <tr>
+            <th>Límite de Crédito</th>
+            <td>@Model.LimiteCredito</td>
+        </tr>
+        <tr>
+            <th>Total Compras Mes Actual</th>
+            <td>@Model.TotalComprasMesActual</td>
+        </tr>
+        <tr>
+            <th>Total Compras Mes Anterior</th>
+            <td>@Model.TotalComprasMesAnterior</td>
+        </tr>
+        <tr>
+            <th>Interés Bonificable</th>
+            <td>@Model.InteresBonificable</td>
+        </tr>
+        <tr>
+            <th>Cuota Mínima</th>
+            <td>@Model.CuotaMinima</td>
+        </tr>
+        <tr>
+            <th>Monto Total a Pagar</th>
+            <td>@Model.MontoTotalPagar</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Tabla de compras mensuales -->
+@if (Model.ComprasMesActual != null && Model.ComprasMesActual.Any())
+{
+    <h3>Compras del Mes Actual</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha de Compra</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var compra in Model.ComprasMesActual)
+                {
+                    <tr>
+                        <td>@compra.FechaCompra.ToString("yyyy-MM-dd")</td>
+                        <td>@compra.Descripcion</td>
+                        <td>@compra.Monto.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No hay compras registradas para este mes.</p>
+}
+
+<!-- Botón para regresar -->
+<a href="@Url.Action("Index", "Tarjeta")" class="btn btn-primary">Regresar</a>

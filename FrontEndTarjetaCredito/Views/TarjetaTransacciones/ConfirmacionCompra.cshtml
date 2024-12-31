@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Confirmación de Compra";
+}
+
+<h2>Compra Realizada Exitosamente</h2>
+
+<div class="alert alert-success">
+    La compra de <strong>@ViewBag.Monto</strong> se ha realizado con éxito.
+</div>
+
+<!-- Botón para regresar -->
+<a href="@Url.Action("Index", "Tarjeta")" class="btn btn-primary">Regresar</a>
+
