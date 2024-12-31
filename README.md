@@ -5,4 +5,4 @@ crédito, incluyendo el detalle de movimientos, cálculo de cuota mínima, cálc
 bonificable, y mostrar el saldo utilizado y disponible de la tarjeta de crédito
 
 Se adjunta gui PDF para revision del proyecto.
-Se adjunta Video demostracion de la aplicacion en ejecucion
+Se adjunta Video demostracion de la aplicacion en ejecucion: Demostración de funcionamiento.mp4
