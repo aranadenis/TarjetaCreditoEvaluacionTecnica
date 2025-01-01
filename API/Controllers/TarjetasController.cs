@@ -52,22 +52,22 @@ namespace API.Controllers
         }
 
         // PUT: api/Tarjetas/{id}
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Tarjeta tarjeta)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPut("{id}")]
+        //public IActionResult Update(int id, [FromBody] Tarjeta tarjeta)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            if (id != tarjeta.TarjetaID)
-                return BadRequest();
+        //    if (id != tarjeta.TarjetaID)
+        //        return BadRequest();
 
-            var existingTarjeta = _tarjetaService.GetTarjetaById(id);
-            if (existingTarjeta == null)
-                return NotFound();
+        //    var existingTarjeta = _tarjetaService.GetTarjetaById(id);
+        //    if (existingTarjeta == null)
+        //        return NotFound();
 
-            _tarjetaService.UpdateTarjeta(tarjeta);
-            return NoContent();
-        }
+        //    _tarjetaService.UpdateTarjeta(tarjeta);
+        //    return NoContent();
+        //}
 
 
     }

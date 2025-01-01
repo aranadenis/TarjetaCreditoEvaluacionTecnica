@@ -40,8 +40,8 @@ namespace Data.Repository
                             tarjetas.Add(new TarjetaConsulta
                             {
                                 TarjetaID = reader.GetInt32(reader.GetOrdinal("TarjetaID")),
-                                NumeroTarjeta = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("NumeroTarjeta")))),
-                                CVV = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("CVV")))),
+                                NumeroTarjeta = reader.GetString(reader.GetOrdinal("NumeroTarjeta")),
+                                CVV = reader.GetString(reader.GetOrdinal("CVV")),
                                 NombreTitular = reader.GetString(reader.GetOrdinal("NombreTitular")),
                                 FechaEmision = reader.GetDateTime(reader.GetOrdinal("FechaEmision")),
                                 FechaExpiracion = reader.GetDateTime(reader.GetOrdinal("FechaExpiracion")),
@@ -85,9 +85,10 @@ namespace Data.Repository
                             tarjeta = new TarjetaConsulta
                             {
                                 TarjetaID = reader.GetInt32(reader.GetOrdinal("TarjetaID")),
-                                NumeroTarjeta = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("NumeroTarjeta")))),
-                                CVV = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("CVV")))),
-
+                                //NumeroTarjeta = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("NumeroTarjeta")))),
+                                //CVV = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader.GetString(reader.GetOrdinal("CVV")))),
+                                NumeroTarjeta= reader.GetString(reader.GetOrdinal("NumeroTarjeta")),
+                                CVV= reader.GetString(reader.GetOrdinal("CVV")),
                                 NombreTitular = reader.GetString(reader.GetOrdinal("NombreTitular")),
                                 FechaEmision = reader.GetDateTime(reader.GetOrdinal("FechaEmision")),
                                 FechaExpiracion = reader.GetDateTime(reader.GetOrdinal("FechaExpiracion")),
